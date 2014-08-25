@@ -19,3 +19,8 @@ script:
   - echo "options(repos=c(RForge='http://rforge.net',CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
   - R -e ".libPaths(); str(as.list(Sys.getenv())); sessionInfo()"
   - Rscript -e 'update.packages(instlib=.libPaths()[1], ask=FALSE)'
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always

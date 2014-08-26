@@ -12,6 +12,8 @@ before_install:
   - sudo apt-get autoremove -y
   - sudo apt-get upgrade -y
   - sudo apt-get autoclean
+  - git config --global user.name "Yihui Xie"
+  - git config --global user.email "xie@yihui.name"
 
 script:
   - "[ ! -d ~/R ] && mkdir ~/R"

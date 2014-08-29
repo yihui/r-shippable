@@ -18,14 +18,13 @@ before_install:
   - git config --global user.email "xie@yihui.name"
 
 install:
-  - cd ..
+  - cd .. && ls -l
   - "[ ! -d r-devel ] && svn co https://svn.r-project.org/R/trunk r-devel"
   - cd r-devel
   - svn up
   - ./tools/rsync-recommended && ./configure && make
-  - "[ ! -d ~/bin ] && mkdir ~/bin"
-  - ln -s -f `pwd`/bin/R ~/bin/Rd
-  - ~/bin/Rd --version
+  - alias Rd=`pwd`/bin/R
+  - Rd --version
 
 script:
   - "[ ! -d ~/R ] && mkdir ~/R"
@@ -35,6 +34,8 @@ script:
   - R -e ".libPaths(); str(as.list(Sys.getenv())); sessionInfo()"
   - Rscript -e "devtools::install_github('rstudio/rmarkdown')"
   - Rscript -e 'update.packages(instlib=.libPaths()[1], ask=FALSE)'
+  - Rd --no-environ -e ".libPaths(); str(as.list(Sys.getenv())); sessionInfo()"
+  - Rd --no-environ -e "devtools::install_github('rstudio/rmarkdown')"
 
 notifications:
   email:

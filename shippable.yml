@@ -36,9 +36,12 @@ script:
   - R -e ".libPaths(); str(as.list(Sys.getenv())); sessionInfo()"
   - Rscript -e "devtools::install_github('rstudio/rmarkdown')"
   - Rscript -e 'update.packages(instlib=.libPaths()[1], ask=FALSE)'
-  - alias Rd=~/r-devel/bin/R
-  - Rd --no-environ -e ".libPaths(); str(as.list(Sys.getenv())); sessionInfo()"
-  - Rd --no-environ -e "devtools::install_github('rstudio/rmarkdown')"
+  - alias Rd='~/r-devel/bin/R --no-environ'
+  - alias
+  - shopt -s expand_aliases
+  - type Rd
+  - Rd -e ".libPaths(); str(as.list(Sys.getenv())); sessionInfo()"
+  - Rd -e "devtools::install_github('rstudio/rmarkdown')"
 
 notifications:
   email:

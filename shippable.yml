@@ -19,12 +19,11 @@ before_install:
 
 install:
   - cd .. && ls -l
-  - "[ ! -d r-devel ] && svn co https://svn.r-project.org/R/trunk r-devel"
-  - cd r-devel
+  - "[ ! -d r-source ] && svn co https://svn.r-project.org/R/trunk r-source"
+  - cd r-source
   - svn up
-  - ./tools/rsync-recommended && ./configure && make
-  - alias Rd=`pwd`/bin/R
-  - Rd --version
+  - ./tools/rsync-recommended && ./configure --prefix=$HOME/r-devel && make && make install
+  - sed -i "s|^R_LIBS_USER.*|R_LIBS_USER=~/r-devel/lib/R/library:/usr/local/lib/R/site-library|" ~/r-devel/lib/R/etc/Renviron
 
 script:
   - "[ ! -d ~/R ] && mkdir ~/R"

@@ -3,8 +3,12 @@
 [ ! -d r-source ] && svn co https://svn.r-project.org/R/trunk r-source
 cd r-source
 rm -rf library/00LOCK-*
+
 svn status -u | grep -E '^\s+\*' && (svn up &&
   ./tools/rsync-recommended && ./configure --prefix=$HOME/r-devel &&
   make && make install)
+
+# so that R-devel shares /usr/lib/R/site-library with R-release (may not work,
+# but it should be unlikely, e.g. when R-release is 2.15.x and R-devel is 3.x)
 sed -i "s|^R_LIBS_USER.*|R_LIBS_USER=~/r-devel/lib/R/library:/usr/lib/R/site-library|" ~/r-devel/lib/R/etc/Renviron
 

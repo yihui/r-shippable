@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cd ..
+rm -f *_*.tar.gz
+R CMD build code
+R CMD check --no-manual *_*.tar.gz && rm -rf *.Rcheck
+# TODO: optionally skip R-devel check (unfortunately Shippable does not give me
+# the commit message, otherwise I can match something like [ci devel] in the
+# message and do R-devel check below)
+rm -f *_*.tar.gz
+alias Rd='~/r-devel/bin/R --no-environ'
+shopt -s expand_aliases
+Rd CMD build code
+Rd CMD check --no-manual *_*.tar.gz && rm -rf *.Rcheck
+

@@ -23,9 +23,9 @@ install:
   - cd .. && ls -l
   - "[ ! -d r-source ] && svn co https://svn.r-project.org/R/trunk r-source"
   - cd r-source
-  - svn up
   - rm -rf library/00LOCK-*
-  - ./tools/rsync-recommended && ./configure --prefix=$HOME/r-devel && make && make install
+  - svn status -u
+  - svn status -u | grep -E '^\\s+\\*' && (svn up && ./tools/rsync-recommended && ./configure --prefix=$HOME/r-devel && make && make install)
   - sed -i "s|^R_LIBS_USER.*|R_LIBS_USER=~/r-devel/lib/R/library:/usr/lib/R/site-library|" ~/r-devel/lib/R/etc/Renviron
 
 script:

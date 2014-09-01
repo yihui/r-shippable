@@ -26,11 +26,7 @@ script:
   - "[ ! -d ~/R ] && mkdir ~/R"
   - cp .Renviron .Rprofile ~/
   - R -f r-config.R
-  - alias Rd='~/r-devel/bin/R --no-environ'
-  - alias
-  - shopt -s expand_aliases
-  - type Rd
-  - Rd -f r-config.R
+  - Rd --version
 
 notifications:
   email:

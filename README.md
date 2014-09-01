@@ -17,18 +17,17 @@ Currently these packages are installed:
 - subversion: for checking out and updating R source from SVN
 
 The development version of R is built in the directory `../r-source`, and
-installed to `~/r-devel`. An alias `Rd` is made to `~/r-devel/bin/R` (note when
-you are in another project, you have to make this alias again and use `shopt -s
-expand_aliases`), so we can use `Rd CMD build`/`check` to build/check packages
-against the development version of R. When we need the latest version of R, just
-hit the button :arrow_forward: on the build page in the Shippable project, and
-R-devel will be re-built. Because we used `svn co` and `svn up`, we do not need
-to check out the full source (only incremental changes). Because Shippable does
-not delete the `r-source` directory, the next build of R-devel should be much
-faster than the first time (thanks to `make`), unless tremendous changes have
-been made in the R source. Moreover, `svn status -u` is analyzed to see if it is
-really necessary to rebuild R-devel: when no new commits were made to the SVN
-repo, the build step will be skipped.
+installed to `~/r-devel`. A symlink `/usr/bin/Rd` is made for `~/r-devel/bin/R`,
+so we can use `Rd CMD build`/`check` to build/check packages against the
+development version of R. When we need the latest version of R, just hit the
+button :arrow_forward: on the build page in the Shippable project, and R-devel
+will be re-built. Because we used `svn co` and `svn up`, we do not need to check
+out the full source (only incremental changes). Because Shippable does not
+delete the `r-source` directory, the next build of R-devel should be much faster
+than the first time (thanks to `make`), unless tremendous changes have been made
+in the R source. Moreover, `svn status -u` is analyzed to see if it is really
+necessary to rebuild R-devel: when no new commits were made to the SVN repo, the
+build step will be skipped.
 
 I have a few custom setting for myself in this repo, which you may not need or
 may want to change if you fork this repo:

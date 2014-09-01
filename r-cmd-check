@@ -12,6 +12,8 @@ R CMD check --no-manual *_*.tar.gz && rm -rf *.Rcheck
 rm -f *_*.tar.gz
 alias Rd='~/r-devel/bin/R --no-environ'
 shopt -s expand_aliases
+R_PKG=$(sed -n "s/Package: *\([^ ]*\)/\1/p" code/DESCRIPTION)
+Rd -e "install.packages('$R_PKG')"
 Rd CMD build code
 Rd CMD check --no-manual *_*.tar.gz && rm -rf *.Rcheck
 

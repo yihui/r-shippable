@@ -29,6 +29,12 @@ in the R source. Moreover, `svn status -u` is analyzed to see if it is really
 necessary to rebuild R-devel: when no new commits were made to the SVN repo, the
 build step will be skipped.
 
+It may take more than 25 minutes to install all the packages and install R-devel
+for the first time. Next time it will take about 6 minutes to build this repo if
+R-devel needs to be re-built, otherwise it will only take about 2 minutes to
+build this repo in the future. Normally you do not really need to re-build this
+repo very frequently.
+
 I have a few custom setting for myself in this repo, which you may not need or
 may want to change if you fork this repo:
 

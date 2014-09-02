@@ -4,7 +4,7 @@
 cd r-source
 rm -rf library
 
-svn status -u | grep -E '^\s+\*' && (svn up &&
+(svn status -u | grep -E '^\s+\*' || [ ! -f configure.status ]) && (svn up &&
   ./tools/rsync-recommended && ./configure --prefix=$HOME/r-devel &&
   make && make install)
 

@@ -1,12 +1,12 @@
 #!/bin/sh
 
-[ ! -d r-source ] && svn co https://svn.r-project.org/R/trunk r-source
+[ ! -d r-source ] && svn co -q https://svn.r-project.org/R/trunk r-source
 cd r-source
 rm -rf library
 
-(svn status -u | grep -E '^\s+\*' || [ ! -f configure.status ]) && (svn up &&
-  ./tools/rsync-recommended && ./configure --prefix=$HOME/r-devel &&
-  make && make install)
+(svn status -u | grep -E '^\s+\*' || [ ! -f configure.status ]) && (svn up -q &&
+  ./tools/rsync-recommended && ./configure -q --prefix=$HOME/r-devel &&
+  make -s && make -s install)
 
 # R-devel is available as Rd now
 sudo ln -s -f ~/r-devel/bin/R /usr/bin/Rd

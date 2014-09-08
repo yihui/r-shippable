@@ -4,12 +4,12 @@ set -e
 
 cd ..
 rm -f *_*.tar.gz
-R CMD build code
+R CMD build code 2&1> /dev/null
 R CMD check --no-manual *_*.tar.gz | grep -E -v 'OK$' && rm -rf *.Rcheck
 # TODO: optionally skip R-devel check (unfortunately Shippable does not give me
 # the commit message, otherwise I can match something like [ci devel] in the
 # message and do R-devel check below)
 rm -f *_*.tar.gz
-Rd CMD build code
+Rd CMD build code 2&1> /dev/null
 Rd CMD check --no-manual *_*.tar.gz | grep -E -v 'OK$' && rm -rf *.Rcheck
 

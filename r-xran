@@ -4,11 +4,10 @@ set -e
 
 cd ..
 rm -f *_*.tar.gz
-R CMD build code &> /dev/null
+R CMD build $R_PKG &> /dev/null
 [ ! -d ~/xran ] && mkdir ~/xran && git clone git@github.com:yihui/xran.git ~/xran
+rm -f ~/xran/src/contrib/$R_PKG_*.tar.gz
 cp *_*.tar.gz ~/xran/src/contrib/
-R_PKG=$(echo *_*.tar.gz | cut -d_ -f1)
-Rscript -e "setwd('~/xran/src/contrib'); unlink(paste0('$R_PKG', '_*')"
-        -e "tools::write_PACKAGES('.', 'source')"
+Rscript -e "tools::write_PACKAGES('~/xran/src/contrib', 'source')"
 cd ~/xran/
 git add * && git commit --amend -m"add new packages" && git push -f origin gh-pages

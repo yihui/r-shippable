@@ -6,7 +6,7 @@ rm -rf library
 
 (svn status -u | grep -E '^\s+\*' || [ ! -f config.status ]) && (svn up -q &&
   ./tools/rsync-recommended && ./configure -q --prefix=$HOME/r-devel &&
-  make -s && make -s install)
+  make -s -j2 && make -s install)
 
 # R-devel is available as Rd now
 sudo ln -s -f ~/r-devel/bin/R /usr/bin/Rd

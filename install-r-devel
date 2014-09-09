@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd ..
 [ ! -d r-source ] && svn co -q https://svn.r-project.org/R/trunk r-source
 cd r-source
 rm -rf library

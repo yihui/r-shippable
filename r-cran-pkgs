@@ -1,0 +1,17 @@
+#!/bin/sh
+
+sudo apt-get install -y \
+r-cran-devtools \
+r-cran-diagram \
+r-cran-ggplot2 \
+r-cran-gridextra \
+r-cran-hmisc \
+r-cran-knitr \
+r-cran-mapproj \
+r-cran-plyr \
+r-cran-rcpparmadillo \
+r-cran-rcurl \
+r-cran-rgl \
+r-cran-shiny \
+r-cran-tikzdevice \
+r-cran-xml

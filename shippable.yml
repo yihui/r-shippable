@@ -20,8 +20,8 @@ before_install:
   - git config --global user.email "xie@yihui.name"
 
 install:
-  - cd .. && ls -l
-  - ./code/install-r-devel
+  - ls -l
+  - ./install-r-devel
 
 script:
   - "[ ! -d ~/R ] && mkdir ~/R"

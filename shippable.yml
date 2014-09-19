@@ -1,8 +1,11 @@
 # Shippable does not support R (yet)
+# Sets up a (reasonably) comprehensive development environment for R
+
 language: python
 
 before_install:
   - sudo apt-get update -qq
+  ## Deal with stupid issue on the shippable/minv2 docker image
   - sudo dpkg-divert --local --rename /usr/bin/ischroot && sudo ln -sf /bin/true /usr/bin/ischroot
   - sudo apt-get upgrade -y
   - sudo apt-get install -y software-properties-common

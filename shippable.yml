@@ -7,10 +7,6 @@ jdk:
 cache: true
 
 before_install:
-  - sudo apt-get update -qq
-  ## Deal with stupid issue on the shippable/minv2 docker image
-  - sudo dpkg-divert --local --rename /usr/bin/ischroot && sudo ln -sf /bin/true /usr/bin/ischroot
-  - sudo apt-get upgrade -y
   - sudo apt-get install -y software-properties-common
   - sudo add-apt-repository -y "deb http://cran.rstudio.com/bin/linux/ubuntu `lsb_release -cs`/"
   - sudo add-apt-repository -y ppa:marutter/c2d4u

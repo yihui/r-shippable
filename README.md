@@ -1,4 +1,4 @@
-[![Build Status](https://api.shippable.com/projects/5400d09ada3d3d8610f7c124/badge/master)](https://www.shippable.com/projects/5400d09ada3d3d8610f7c124)
+[![Build Status](https://api.shippable.com/projects/540f4fe35adf368bc39026bb/badge)](https://app.shippable.com/projects/540f4fe35adf368bc39026bb/builds/latest)
 
 This repo is used to set up the R package development environment for me on
 Shippable. Because Shippable maintains the state of its Minions, the installed

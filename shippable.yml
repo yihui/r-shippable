@@ -1,6 +1,9 @@
 # Shippable does not support R (yet)
 # Sets up a (reasonably) comprehensive development environment for R
 language: java
+jdk:
+ - openjdk7
+
 cache: true
 
 before_install:

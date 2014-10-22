@@ -1,7 +1,7 @@
 # Shippable does not support R (yet)
 # Sets up a (reasonably) comprehensive development environment for R
-
-language: python
+language: c
+cache: true
 
 before_install:
   - sudo apt-get update -qq
